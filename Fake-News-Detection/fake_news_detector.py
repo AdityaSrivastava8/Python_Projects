@@ -64,7 +64,7 @@ nltk.download('stopwords')
 
 import pandas as pd
 
-df = pd.read_csv("fake_news.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/AdityaSrivastava8/Python_Projects/refs/heads/main/Fake-News-Detection/fake_news.csv")
 
 # Display first five rows
 print(df.head())
