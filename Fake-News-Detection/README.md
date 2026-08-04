@@ -34,14 +34,14 @@ classifier for fake news detection.
 
 The following tools, libraries, and technologies were used to develop this project:
 
-**Python** : Primary programming language used for implementing the project. 
-**Pandas** : Used to load, organize, and manipulate the dataset. 
-**NLTK (Natural Language Toolkit)** : Performs NLP tasks such as tokenization, stopword removal, and stemming. 
-**Scikit-learn** : Provides TF-IDF Vectorization, train-test splitting, the Multinomial Naive Bayes classifier, and evaluation metrics. 
-**TF-IDF Vectorizer** : Converts textual news articles into numerical feature vectors suitable for machine learning.
-**Multinomial Naive Bayes** : Machine Learning algorithm used to classify news articles as Real or Fake.
-**Google Colab** : Development environment used to write and execute the Python notebook. 
-**GitHub** : Used for version control and hosting the project repository.
+1. **Python** : Primary programming language used for implementing the project. 
+2. **Pandas** : Used to load, organize, and manipulate the dataset. 
+3. **NLTK (Natural Language Toolkit)** : Performs NLP tasks such as tokenization, stopword removal, and stemming. 
+4. **Scikit-learn** : Provides TF-IDF Vectorization, train-test splitting, the Multinomial Naive Bayes classifier, and evaluation metrics. 
+5. **TF-IDF Vectorizer** : Converts textual news articles into numerical feature vectors suitable for machine learning.
+6. **Multinomial Naive Bayes** : Machine Learning algorithm used to classify news articles as Real or Fake.
+7. **Google Colab** : Development environment used to write and execute the Python notebook. 
+8. **GitHub** : Used for version control and hosting the project repository.
 
 # Explaination of all the Steps : (Screenshots are uploaded too) :
 
