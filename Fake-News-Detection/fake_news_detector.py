@@ -3,49 +3,19 @@
 # ============================================================
 
 # ------------------------------------------------------------
-# INTRODUCTION
-# ------------------------------------------------------------
-
-# Fake news has become a major issue in today's digital world,
-# where misleading information spreads rapidly through social
-# media and news websites. Manually verifying every news article
-# is difficult and time-consuming. Natural Language Processing
-# (NLP) and Machine Learning (ML) provide an efficient way to
-# automatically classify news articles as Real or Fake based on
-# their textual content.
-#
-# This project uses NLP preprocessing techniques such as
-# Tokenization, Stopword Removal, Stemming, and TF-IDF
-# Vectorization before training a Multinomial Naive Bayes
-# classifier for fake news detection.
-
-# ------------------------------------------------------------
-# OBJECTIVE
-# ------------------------------------------------------------
-
-# 1. Preprocess news articles using NLP techniques.
-# 2. Convert textual data into numerical features using TF-IDF.
-# 3. Train a Machine Learning model to classify news as Real or Fake.
-# 4. Predict the authenticity of new news articles entered by the user.
-# 5. Evaluate the model using classification accuracy.
-
-# ------------------------------------------------------------
 # DATASET USED
 # ------------------------------------------------------------
 
-# Dataset Name:
-# Fake News Dataset (fake_news.csv)
-#
+# Dataset Name: Fake News Dataset (fake_news.csv) 
+# CSV URL : https://raw.githubusercontent.com/AdityaSrivastava8/Python_Projects/refs/heads/main/Fake-News-Detection/fake_news.csv 
+
 # Dataset Columns:
 # - Title : Headline of the news article.
 # - Text  : Complete news article.
 # - Label : Real or Fake
-#
+
 # Dataset Source:
 # https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset
-#
-# Save the dataset as:
-# fake_news.csv
 
 # ============================================================
 # Import Libraries
@@ -210,22 +180,3 @@ new_vec = vectorizer.transform([new_news])
 prediction = model.predict(new_vec)[0]
 
 print("Prediction:", prediction)
-
-# ============================================================
-# RESULTS
-# ============================================================
-
-# The trained model successfully classifies news articles into
-# Real or Fake categories.
-
-# ============================================================
-# CONCLUSION
-# ============================================================
-
-# This project demonstrates how Natural Language Processing
-# and Machine Learning can be combined to detect fake news.
-# Tokenization, Stopword Removal, Stemming, and TF-IDF
-# Vectorization convert raw text into numerical features,
-# while the Multinomial Naive Bayes classifier predicts
-# whether a news article is Real or Fake.
-# ============================================================
