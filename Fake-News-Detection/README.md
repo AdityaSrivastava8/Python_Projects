@@ -48,6 +48,7 @@ The following tools, libraries, and technologies were used to develop this proje
 1. Dataset Preview :
 
 The dataset is loaded using the Pandas library and contains three main columns: Title, Text, and Label. The df.head() function is used to display the first five records, allowing us to verify that the data has been loaded correctly before preprocessing and model training begin.
+
 Csv : https://raw.githubusercontent.com/AdityaSrivastava8/Python_Projects/refs/heads/main/Fake-News-Detection/fake_news.csv
 Source : https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset
 
