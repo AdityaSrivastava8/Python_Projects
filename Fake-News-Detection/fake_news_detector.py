@@ -2,21 +2,6 @@
 #              FAKE NEWS DETECTION USING NLP
 # ============================================================
 
-# ------------------------------------------------------------
-# DATASET USED
-# ------------------------------------------------------------
-
-# Dataset Name: Fake News Dataset (fake_news.csv) 
-# CSV URL : https://raw.githubusercontent.com/AdityaSrivastava8/Python_Projects/refs/heads/main/Fake-News-Detection/fake_news.csv 
-
-# Dataset Columns:
-# - Title : Headline of the news article.
-# - Text  : Complete news article.
-# - Label : Real or Fake
-
-# Dataset Source:
-# https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset
-
 # ============================================================
 # Import Libraries
 # ============================================================
