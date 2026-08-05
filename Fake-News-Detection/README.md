@@ -49,6 +49,8 @@ The following tools, libraries, and technologies were used to develop this proje
 
 The dataset is loaded using the Pandas library and contains three main columns: Title, Text, and Label. The df.head() function is used to display the first five records, allowing us to verify that the data has been loaded correctly before preprocessing and model training begin.
 
+CSV URL : https://raw.githubusercontent.com/AdityaSrivastava8/Python_Projects/refs/heads/main/Fake-News-Detection/fake_news.csv
+
 2. Tokenization :
 
 Tokenization is the process of breaking a news article into individual words or tokens. This is the first step in text preprocessing and helps the model analyze the text more effectively by treating each word as a separate unit.
