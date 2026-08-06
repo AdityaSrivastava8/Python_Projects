@@ -418,7 +418,7 @@ Predict Real or Fake
 *************************************************************************************************
 
 
-Fake News Detection Code – One-Line Explanation for Each Step
+Fake News Detection Code – 
 
 1. import nltk – Imports the NLTK library for Natural Language Processing (NLP). NLTK (Natural Language Toolkit) is a popular Python library used for Natural Language Processing (NLP). It provides tools for processing, analyzing, and understanding human language (text). 
      
