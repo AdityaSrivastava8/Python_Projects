@@ -1,0 +1,565 @@
+# Concepts Used in the Fake News Detection Code
+
+## 1. Natural Language Processing (NLP)
+
+**Definition:**
+Natural Language Processing (NLP) is a branch of Artificial Intelligence (AI) that enables computers to understand, process, and analyze human language.
+
+**In this project:**
+
+* Breaking text into words
+* Removing unnecessary words
+* Reducing words to their root form
+
+---
+
+## 2. Dataset
+
+A dataset is a collection of data used to train a machine learning model.
+
+The dataset contains three columns:
+
+| Column | Description           |
+| ------ | --------------------- |
+| Title  | News headline         |
+| Text   | Complete news article |
+| Label  | Real or Fake          |
+
+Labels - The Label column is the target variable that indicates whether each news article is "Real" or "Fake", allowing the machine learning model to learn and classify new articles accurately.
+
+---
+
+## 3. Pandas
+
+```python
+import pandas as pd
+```
+Pandas is a Python library used to work with tables (DataFrames).
+
+Example:
+
+```python
+df = pd.read_csv("fake_news.csv")
+```
+
+This loads the CSV file into a DataFrame.
+A CSV (Comma-Separated Values) file is a plain text file used to store tabular data in rows and columns, where each value is separated by a comma.
+
+---
+
+## 4. DataFrame
+
+A Pandas DataFrame is a two-dimensional, labeled data structure that stores data in rows and columns, making it easy to organize, manipulate, and analyze datasets.
+
+You can access the data like this :
+
+df.head()          # First 5 rows
+df["Text"]         # Entire Text column
+df["Label"]        # Entire Label column
+df.loc[0]          # First row
+df.loc[0, "Text"]  # Text of the first news article
+
+
+Example:
+
+| Title       | Text | Label |
+| ----------- | ---- | ----- |
+| NASA Launch | ...  | Real  |
+
+---
+
+## 5. Tokenization
+
+```python
+tokens = word_tokenize(text)
+```
+
+Tokenization is the process of breaking a large piece of text (sentence, paragraph, or document) into smaller units called tokens. These tokens are usually words, punctuation marks, or sentences.
+
+Example:
+
+```
+The government announced a new policy.
+```
+
+becomes
+
+```
+["The", "government", "announced", "a", "new", "policy", "."]
+```
+
+---
+
+## 6. Stopwords
+
+Stopwords are common words in a language (such as the, is, a, an, and, of, to) that occur frequently but usually add little meaning to the text. They are removed during preprocessing to focus on important words.
+
+Examples:
+
+```
+the
+is
+a
+an
+of
+to
+and
+```
+
+Removing them reduces unnecessary data.
+
+---
+
+## 7. Stopword Removal
+
+```python
+filtered = [word for word in tokens if word.lower() not in stop_words]
+```
+
+Example
+
+Before:
+
+```
+The government announced a new policy
+```
+
+After:
+
+```
+government announced new policy
+```
+
+---
+
+## 8. Stemming
+
+```python
+PorterStemmer()
+```
+
+Stemming is the process of reducing a word to its root (stem) form by removing prefixes or suffixes. This helps treat different forms of the same word as a single word.
+
+Examples:
+
+```
+playing → play
+running → run
+studies → studi
+```
+
+Purpose:
+
+* Reduce vocabulary size
+* Improve model efficiency
+
+---
+
+## 9. TF-IDF
+
+TF-IDF is a text vectorization technique that converts words into numerical values based on how important they are in a document relative to the entire dataset. It helps machine learning models identify the most significant words.
+
+```python
+TfidfVectorizer()
+```
+
+### Full Form
+
+**Term Frequency – Inverse Document Frequency**
+
+Computers cannot understand text directly.
+
+TF-IDF converts words into numbers.
+
+### Term Frequency (TF)
+
+Measures how frequently a word appears in a document.
+
+### Inverse Document Frequency (IDF)
+
+Reduces the importance of words that appear in almost every document.
+
+Example:
+
+```
+government → high importance
+the → low importance
+```
+
+---
+
+## 10. Feature Vector
+
+A feature vector is a numerical representation of data, where each value represents a feature used by a machine learning model for training and prediction.
+
+After TF-IDF,
+
+```
+"The government announced policy"
+```
+
+might become
+
+```
+[0.12 0.00 0.84 0.35 ...]
+```
+
+This numerical representation is called a **feature vector**.
+
+---
+
+## 11. X and y
+
+X contains the input features (TF-IDF vectors), while y contains the target labels (Real or Fake) used to train the machine learning model.
+
+```python
+X = vectorizer.fit_transform(df["Text"])
+y = df["Label"]
+```
+
+**X** → Input features (TF-IDF vectors)
+
+**y** → Output labels
+
+```
+Real
+Fake
+```
+
+---
+
+## 12. Train-Test Split
+
+```python
+train_test_split()
+```
+
+Splits the dataset into:
+
+* **80% Training Data**
+* **20% Testing Data**
+
+Purpose:
+
+* Train the model on one part.
+* Test the model on unseen data.
+
+---
+
+## 13. Random State
+
+```python
+random_state=42
+```
+
+random_state is a parameter that fixes the random seed, ensuring the dataset is split the same way every time the program runs for consistent and reproducible results.
+---
+
+## 14. Machine Learning Model
+
+
+```python
+MultinomialNB()
+```
+Multinomial Naive Bayes (MultinomialNB) is a supervised machine learning algorithm used for text classification. It predicts whether a news article is Real or Fake by analyzing the frequency and importance of words in the text.
+
+The classifier used is **Multinomial Naive Bayes**.
+
+Common applications:
+
+* Text Classification
+* Spam Detection
+* Fake News Detection
+* Sentiment Analysis
+
+---
+
+## 15. Naive Bayes 
+
+Naive Bayes is a supervised machine learning algorithm based on Bayes' Theorem that classifies data by selecting the class with the highest probability.
+
+Example:
+
+```
+Scientists discovered new medicine
+```
+
+↓
+
+```
+Probability(Real) = 0.91
+Probability(Fake) = 0.09
+```
+
+Prediction:
+
+```
+Real
+```
+
+---
+
+## 16. Why "Naive"?
+
+It assumes every word is independent.
+
+Example:
+
+```
+new
+medicine
+```
+
+are treated independently even though they are related.
+
+This assumption is "naive," but it works well for many text classification problems.
+
+---
+
+## 17. Model Training
+
+```python
+model.fit(X_train, y_train)
+```
+Model training is the process in which the machine learning model learns patterns and relationships from the training data. It uses the input features (X_train) and their corresponding labels (y_train) to build a model that can classify new, unseen news articles.
+
+Examples of learned patterns:
+
+```
+NASA
+government
+research
+```
+
+→ often **Real**
+
+```
+aliens
+magic
+immortal
+```
+
+→ often **Fake**
+
+---
+
+## 18. Prediction
+
+```python
+model.predict()
+```
+
+Predicts whether unseen news is:
+
+* **Real**
+* **Fake**
+
+---
+
+## 19. Accuracy
+
+```python
+accuracy_score()
+```
+
+Formula:
+
+```
+Accuracy =
+Correct Predictions
+-------------------
+Total Predictions
+```
+
+Example:
+
+```
+18 correct
+20 total
+```
+
+Accuracy:
+
+```
+18/20 = 90%
+```
+
+---
+
+## 20. User Input
+
+```python
+input()
+```
+
+Allows the user to enter a new news article.
+
+Workflow:
+
+```
+Input
+   ↓
+TF-IDF
+   ↓
+Naive Bayes
+   ↓
+Prediction
+```
+
+---
+
+## 21. Supervised Learning
+
+This project is an example of **Supervised Learning** because the dataset already contains the correct labels.
+
+Example:
+
+| News                    | Label |
+| ----------------------- | ----- |
+| NASA launched satellite | Real  |
+| Moon is made of cheese  | Fake  |
+
+The model learns from these labeled examples.
+
+---
+
+## 22. Text Classification
+
+Text Classification is a Natural Language Processing (NLP) task in which a machine learning model automatically assigns a predefined category or label to a piece of text based on its content.
+
+Input:
+
+```
+News Article
+```
+
+Output:
+
+```
+Real
+or
+Fake
+```
+
+---
+
+# Overall Workflow
+
+```
+Dataset (CSV)
+        │
+        ▼
+Load using Pandas
+        │
+        ▼
+Tokenization
+        │
+        ▼
+Stopword Removal
+        │
+        ▼
+Stemming
+        │
+        ▼
+TF-IDF Vectorization
+        │
+        ▼
+Train-Test Split
+        │
+        ▼
+Train Naive Bayes Model
+        │
+        ▼
+Predict Test Data
+        │
+        ▼
+Calculate Accuracy
+        │
+        ▼
+Take User Input
+        │
+        ▼
+Predict Real or Fake
+```
+
+*************************************************************************************************
+*************************************************************************************************
+
+
+Fake News Detection Code – One-Line Explanation for Each Step
+
+1.  import nltk – Imports the NLTK library for Natural Language
+    Processing (NLP).
+2.  nltk.download(‘punkt’) – Downloads the tokenizer used to split text
+    into words and sentences.
+3.  nltk.download(‘punkt_tab’) – Downloads additional tokenizer data
+    required by newer versions of NLTK.
+4.  nltk.download(‘stopwords’) – Downloads the list of common English
+    stopwords.
+5.  import pandas as pd – Imports the Pandas library for handling
+    datasets.
+6.  df = pd.read_csv(“fake_news.csv”) – Loads the fake news dataset into
+    a Pandas DataFrame.
+7.  print(df.head()) – Displays the first five rows of the dataset.
+8.  from nltk.tokenize import word_tokenize – Imports the word
+    tokenization function.
+9.  text = df.loc[0, “Text”] – Selects the first news article from the
+    dataset.
+10. tokens = word_tokenize(text) – Splits the news article into
+    individual words (tokens).
+11. print(tokens) – Displays the tokenized words.
+12. from nltk.corpus import stopwords – Imports the English stopwords
+    collection.
+13. stop_words = set(stopwords.words(“english”)) – Creates a set of
+    common English stopwords.
+14. filtered = [word for word in tokens if word.lower() not in
+    stop_words] – Removes unnecessary stopwords from the token list.
+15. print(filtered) – Displays the filtered words after stopword
+    removal.
+16. from nltk.stem import PorterStemmer – Imports the Porter Stemming
+    algorithm.
+17. stemmer = PorterStemmer() – Creates a stemmer object for reducing
+    words to their root form.
+18. stemmed = [stemmer.stem(word) for word in filtered] – Converts each
+    filtered word to its root form.
+19. print(stemmed) – Displays the stemmed words.
+20. from sklearn.feature_extraction.text import TfidfVectorizer –
+    Imports the TF-IDF vectorizer.
+21. vectorizer = TfidfVectorizer(stop_words=“english”) – Creates a
+    TF-IDF vectorizer that ignores English stopwords.
+22. X = vectorizer.fit_transform(df[“Text”]) – Converts all news
+    articles into numerical TF-IDF feature vectors.
+23. y = df[“Label”] – Stores the corresponding labels (Real/Fake).
+24. from sklearn.model_selection import train_test_split – Imports the
+    function used to split the dataset.
+25. train_test_split(…) – Divides the dataset into training (80%) and
+    testing (20%) sets.
+26. from sklearn.naive_bayes import MultinomialNB – Imports the
+    Multinomial Naive Bayes classifier.
+27. model = MultinomialNB() – Creates a Naive Bayes classification
+    model.
+28. model.fit(X_train, y_train) – Trains the model using the training
+    data.
+29. from sklearn.metrics import accuracy_score – Imports the accuracy
+    evaluation function.
+30. pred = model.predict(X_test) – Predicts the labels of the testing
+    dataset.
+31. print(pred) – Displays the predicted labels.
+32. print(“Accuracy:”, accuracy_score(y_test, pred)) – Calculates and
+    prints the model’s prediction accuracy.
+33. new_news = input(“Enter a news article:”) – Accepts a new news
+    article from the user.
+34. new_vec = vectorizer.transform([new_news]) – Converts the
+    user-entered article into a TF-IDF feature vector.
+35. prediction = model.predict(new_vec)[0] – Predicts whether the
+    entered news is Real or Fake.
+36. print(“Prediction:”, prediction) – Displays the final prediction to
+    the user.
+
+Overall Workflow: Import Libraries → Load Dataset → Tokenize Text →
+Remove Stopwords → Stem Words → Convert Text to TF-IDF Features → Split
+Dataset → Train Naive Bayes Model → Test Model → Calculate Accuracy →
+Accept User Input → Predict Real or Fake.
+
+GitHub : https://github.com/AdityaSrivastava8/Python_Projects/tree/main/Fake-News-Detection
+
