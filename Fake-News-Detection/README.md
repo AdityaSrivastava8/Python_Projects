@@ -102,3 +102,5 @@ Similarly, when a user enters a fake or misleading news article, it undergoes th
 - Develop a web application using Streamlit or Flask for real-time news prediction.
 - Train the model on larger and more diverse datasets.
 - Integrate live news APIs for real-time fake news detection.
+
+# Link To The Collab File : https://colab.research.google.com/drive/1ASZR6hd9h66fXjORN8sxbjEhK_Cg7Jm_?usp=sharing (Test The Code Yourself) 
