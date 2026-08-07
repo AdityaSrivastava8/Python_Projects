@@ -103,4 +103,5 @@ Similarly, when a user enters a fake or misleading news article, it undergoes th
 - Train the model on larger and more diverse datasets.
 - Integrate live news APIs for real-time fake news detection.
 
-# Link To The Collab File : https://colab.research.google.com/drive/1ASZR6hd9h66fXjORN8sxbjEhK_Cg7Jm_?usp=sharing (Test The Code Yourself) 
+# Link To The Collab File : (Test The Code Yourself) 
+https://colab.research.google.com/drive/1ASZR6hd9h66fXjORN8sxbjEhK_Cg7Jm_?usp=sharing 
